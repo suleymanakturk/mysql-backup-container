@@ -13,4 +13,3 @@ cat <<EOF > /etc/ssmtp/revaliases
 root:${MAIL_USERNAME}:${MAIL_SERVER}
 EOF
 
-echo "Selamlar" 
