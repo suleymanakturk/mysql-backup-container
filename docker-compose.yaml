@@ -1,0 +1,27 @@
+version: "3.3"
+services:
+  db:
+    image: mysql
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'suleymanakturkdb'
+      MYSQL_USER: 'suleymanakt'
+      MYSQL_PASSWORD: 'Suleyman123'
+      MYSQL_ROOT_PASSWORD: '12345678'
+    ports:
+    - "3306:3306"
+    volumes:
+    - datamysql:/var/lib/mysql
+  ssmtp:
+    depends_on:
+    - db
+    image: cron:v2
+    container_name: ssmtp
+    hostname: ssmtp
+    environment:
+      MAIL_SERVER: smtp.gmail.com:465
+      MAIL_USERNAME: test@gmail.com
+      MAIL_PASSWORD: qpokqhfgyqsivzuk
+volumes:
+  datamysql:
